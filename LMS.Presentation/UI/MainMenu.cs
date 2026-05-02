@@ -1,0 +1,60 @@
+﻿using System;
+using System.Xml.Serialization;
+
+namespace LMS.Presentation.UI
+{
+    public class MainMenu
+    {
+        private readonly BookUI _bookUI;
+
+        // FIXED CONSTRUCTOR: No underscores in the parameter, lowercase 'b'
+        public MainMenu(BookUI bookUI)
+        {
+            _bookUI = bookUI;
+        }
+
+        public void Show()
+        {
+            bool exit = false;
+
+            while (!exit)
+            {
+                Console.Clear();
+                Console.WriteLine("########## LIBRARY MANAGEMENT SYSTEM ##########");
+                Console.WriteLine("1. Add new book");
+                Console.WriteLine("2. View books");
+                Console.WriteLine("3. Delete book");
+                Console.WriteLine("0. Exit");
+                Console.Write("\nSelect an option: ");
+
+                string choice = Console.ReadLine() ?? "";
+
+                switch (choice)
+                {
+                    case "1":
+                        _bookUI.AddBookFlow();
+                        break;                    
+                    
+                    case "2":
+                        _bookUI.ViewBooksFlow();
+                        break;                      
+                    
+                    case "3":
+                        Console.WriteLine("\nDeletion feature to build");
+                        Console.ReadKey();
+                        break;
+
+                    case "0":
+                        exit = true;
+                        Console.WriteLine("\nQuitting the app. Goodbye!");
+                        break;
+
+                    default:
+                        Console.WriteLine("\nPlease insert a valid option.");
+                        Console.ReadKey();
+                        break;
+                }
+            }
+        }
+    }
+}
