@@ -1,6 +1,7 @@
 using System.ComponentModel.Design;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Text.Json.Serialization;
 
 namespace LMS.Domain.Entities
 {
@@ -23,7 +24,14 @@ namespace LMS.Domain.Entities
             Author = author;
             isAvailable = true;
         }
-
+        [JsonConstructor]
+        private Book(Guid id, string title, string author, bool isAvailable)
+        {
+            Id= id;
+            Title = title;
+            Author = author;
+            this.isAvailable = isAvailable;
+        }
         public void CheckOut()
         {
             if (!isAvailable)
@@ -38,26 +46,5 @@ namespace LMS.Domain.Entities
         }
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
