@@ -1,6 +1,3 @@
-using System.ComponentModel.Design;
-using System.Reflection;
-using System.Runtime.InteropServices;
 using System.Text.Json.Serialization;
 
 namespace LMS.Domain.Entities
@@ -15,9 +12,9 @@ namespace LMS.Domain.Entities
         public Book(string title, string author)
         {
             if (string.IsNullOrWhiteSpace(title))
-                throw new ArgumentNullException("Title can't be blank.", nameof(title));
+                throw new ArgumentNullException(nameof(title), "Title can't be blank.");
             if (string.IsNullOrWhiteSpace(author))
-                throw new ArgumentNullException("Author can't be blank.", nameof(author));
+                throw new ArgumentNullException(nameof(author), "Author can't be blank.");
             
             Id = Guid.NewGuid();
             Title = title;

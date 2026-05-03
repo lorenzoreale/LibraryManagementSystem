@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Xml.Serialization;
 
 namespace LMS.Presentation.UI
 {
@@ -7,7 +6,6 @@ namespace LMS.Presentation.UI
     {
         private readonly BookUI _bookUI;
 
-        // FIXED CONSTRUCTOR: No underscores in the parameter, lowercase 'b'
         public MainMenu(BookUI bookUI)
         {
             _bookUI = bookUI;
