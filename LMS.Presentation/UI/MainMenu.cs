@@ -40,8 +40,7 @@ namespace LMS.Presentation.UI
                         break;                      
                     
                     case "3":
-                        Console.WriteLine("\nDeletion feature to build");
-                        Console.ReadKey();
+                        _bookUI.DeleteBookFlow();
                         break;
 
                     case "0":

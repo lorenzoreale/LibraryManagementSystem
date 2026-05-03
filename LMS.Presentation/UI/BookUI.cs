@@ -13,7 +13,6 @@ namespace LMS.Presentation.UI
             _bookRepo = bookRepo;
         }
 
-        // FIXED: Notice there is NO 'static' keyword here
         public void AddBookFlow()
         {
             Console.Clear();
@@ -44,7 +43,6 @@ namespace LMS.Presentation.UI
             Console.ReadKey();
         }
 
-        // FIXED: Notice there is NO 'static' keyword here
         public void ViewBooksFlow()
         {
             Console.Clear();
@@ -71,6 +69,56 @@ namespace LMS.Presentation.UI
 
             Console.WriteLine("\nPress a key to go back to the menu.");
             Console.ReadKey();
+        }
+
+        public void DeleteBookFlow()
+        {
+            Console.Clear();
+            Console.WriteLine("===== Delete a book =====");
+
+            var books = _bookRepo.GetAll();
+
+            if(books.Count == 0)
+            {
+                Console.WriteLine("The library is empty.");
+                Console.WriteLine("Press a key to go back to the menu.");
+                Console.ReadKey();
+                return;
+            }
+
+            foreach (var book in books)
+            {
+                Console.WriteLine($"- ID: {book.Id}");
+                Console.WriteLine($"  Title: {book.Title}");
+                Console.WriteLine($"  Author: {book.Author}");
+                Console.WriteLine("  -------------------------");
+            }
+
+            Console.Write("\nInsert the ID of the book to delete: ");
+
+            string bookIdToRemove = Console.ReadLine() ?? "";
+
+            if (!Guid.TryParse(bookIdToRemove, out Guid id))
+            {
+                Console.WriteLine("\nID not valid.");
+                Console.WriteLine("\nPress a key to go back to the menu.");
+                Console.ReadKey();
+                return;
+            }
+
+            try
+            {
+                _bookRepo.Delete(id);
+                Console.WriteLine("\nBook successfully deleted.");
+            }
+            catch (InvalidOperationException ex)
+            {
+                Console.WriteLine($"\nError: {ex.Message}");
+            }
+
+            Console.WriteLine("\nPress a key to go back to the menu.");
+            Console.ReadKey();
+
         }
     }
 }
