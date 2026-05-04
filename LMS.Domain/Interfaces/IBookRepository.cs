@@ -8,7 +8,7 @@ namespace LMS.Domain.Interfaces
         
         List<Book> GetAll();
 
-        void Delete(Guid id);
+        void Delete(Guid id); // a book record should not be deleted from the system, at least is not available anymore
     }
 
 }

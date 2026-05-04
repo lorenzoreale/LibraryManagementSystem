@@ -11,6 +11,8 @@ namespace LMS.Domain.Entities
         public string Email {get; private set; }
         public DateOnly RegistrationDate {get; private set; }
 
+        // public bool isDeleted {get; private set; } // a member record at least is deactivated, not phisically removed from the system
+
         public Member(string name, string surname, DateOnly dateOfBirth, string email)
         {
             if(string.IsNullOrWhiteSpace(name))
