@@ -17,11 +17,13 @@ namespace LMS.Presentation.UI
 
             while (!exit)
             {
+                // menu to be designed to include members and transactions
                 Console.Clear();
                 Console.WriteLine("########## LIBRARY MANAGEMENT SYSTEM ##########");
                 Console.WriteLine("1. Add new book");
                 Console.WriteLine("2. View books");
                 Console.WriteLine("3. Delete book");
+                // Members section to be added
                 Console.WriteLine("0. Exit");
                 Console.Write("\nSelect an option: ");
 

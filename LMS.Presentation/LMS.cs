@@ -3,6 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 using LMS.Domain.Interfaces;
 using LMS.Infrastructure.Repositories;
 using LMS.Presentation.UI;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using System.Runtime.CompilerServices;
 
 namespace LMS.Presentation
 {
@@ -10,7 +12,14 @@ namespace LMS.Presentation
     {
         public static void Main(string[] args)
         {
-            var serviceProvider = new ServiceCollection().AddSingleton<IBookRepository, JsonBookRepository>().AddTransient<BookUI>().AddTransient<MainMenu>().BuildServiceProvider();
+            var serviceProvider = new ServiceCollection()
+                .AddSingleton<IBookRepository, JsonBookRepository>()
+                .AddSingleton<IMemberRepository, JsonMemberRepository>()
+                .AddSingleton<ITransactionRepository, JsonTransactionRepository>()
+                .AddTransient<BookUI>()
+                .AddTransient<MemberUI>()
+                .AddTransient<MainMenu>()
+                .BuildServiceProvider();
             var app = serviceProvider.GetService<MainMenu>();
 
             if (app == null)

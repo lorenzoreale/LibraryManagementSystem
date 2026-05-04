@@ -10,6 +10,6 @@ namespace LMS.Domain.Interfaces
 
         List<Transaction> GetByBookId(Guid bookId);
 
-        List<Transaction> GetByMemberId(Guid memberId); // are all these methods necessary? an intelligence team will have access to a flat table (json in this case) with all the transactions log
+        List<Transaction> GetByMemberId(Guid memberId);
     }
 }
