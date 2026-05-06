@@ -21,7 +21,7 @@ namespace LMS.Domain.Entities
             if(string.IsNullOrWhiteSpace(email))
                 throw new ArgumentNullException(nameof(email), "Email can't be blank.");
             if(!System.Text.RegularExpressions.Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
-                throw new ArgumentException(nameof(email), "Email format is not valid.");
+                throw new ArgumentException("Email format is not valid.", nameof(email));
             
 
             Id = Guid.NewGuid();

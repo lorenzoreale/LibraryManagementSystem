@@ -27,11 +27,9 @@ namespace LMS.Infrastructure.Repositories
         }
 
         public List<Transaction> GetAll()
-        {
+        {   
             var jsonText = File.ReadAllText(_filepath);
-
-            var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-            return JsonSerializer.Deserialize<List<Transaction>>(jsonText, options) ?? new List<Transaction>();
+            return JsonSerializer.Deserialize<List<Transaction>>(jsonText) ?? new List<Transaction>();
         }
 
         public List<Transaction> GetByBookId(Guid bookId)

@@ -3,8 +3,6 @@ using Microsoft.Extensions.DependencyInjection;
 using LMS.Domain.Interfaces;
 using LMS.Infrastructure.Repositories;
 using LMS.Presentation.UI;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using System.Runtime.CompilerServices;
 
 namespace LMS.Presentation
 {
