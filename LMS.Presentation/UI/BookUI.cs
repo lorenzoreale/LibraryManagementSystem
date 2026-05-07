@@ -1,4 +1,3 @@
-using System;
 using LMS.Domain.Entities;
 using LMS.Domain.Interfaces;
 
@@ -24,13 +23,27 @@ namespace LMS.Presentation.UI
             Console.Write("Author: ");
             string author = Console.ReadLine() ?? "";
 
+            Console.Write("Quantity: ");
+            if (!int.TryParse(Console.ReadLine(), out int quantity))
+            {
+                Console.WriteLine("\nInvalid quantity format.");
+                Console.WriteLine("\nPress a key to go back to the menu.");
+                Console.ReadKey();
+                return;
+            }
+            
+
             try
             {
-                Book newBook = new Book(title, author);
+                Book newBook = new Book(title, author, quantity);
                 _bookRepo.Add(newBook);
                 Console.WriteLine($"\nOperation Successful. The book '{newBook.Title}' has been added.");
             }
             catch (ArgumentNullException ex)
+            {
+                Console.WriteLine($"\nValidation Error: {ex.Message}");
+            }
+            catch (ArgumentOutOfRangeException ex)
             {
                 Console.WriteLine($"\nValidation Error: {ex.Message}");
             }
@@ -58,11 +71,9 @@ namespace LMS.Presentation.UI
             {
                 foreach (var book in books)
                 {
-                    string status = book.isAvailable ? "Available" : "Checked Out";
                     Console.WriteLine($"- ID: {book.Id}");
                     Console.WriteLine($"  Title: {book.Title}");
                     Console.WriteLine($"  Author: {book.Author}");
-                    Console.WriteLine($"  Status: [{status}]");
                     Console.WriteLine("  -------------------------");
                 }
             }
