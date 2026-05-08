@@ -46,6 +46,12 @@ namespace LMS.Infrastructure.Repositories
 
         }
 
+        public Book? GetById(Guid id)
+        {
+            var books = GetAll();
+            return books.FirstOrDefault(b => b.Id == id);
+        }
+
     }
 
 }

@@ -9,6 +9,8 @@ namespace LMS.Domain.Interfaces
         List<Book> GetAll();
 
         void Delete(Guid id);
+
+        Book? GetById(Guid id);
     }
 
 }

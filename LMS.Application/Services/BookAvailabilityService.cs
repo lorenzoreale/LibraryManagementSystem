@@ -16,7 +16,7 @@ namespace LMS.Application.Services
 
         public int GetAvailableCopies(Guid bookId)
         {
-            var book = _bookRepo.GetAll().FirstOrDefault(b => b.Id == bookId);
+            var book = _bookRepo.GetById(bookId);
 
             if (book == null)
                 throw new InvalidOperationException("Book not found.");

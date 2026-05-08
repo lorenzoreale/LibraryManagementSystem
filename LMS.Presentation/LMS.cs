@@ -1,8 +1,8 @@
-using System;
 using Microsoft.Extensions.DependencyInjection;
 using LMS.Domain.Interfaces;
 using LMS.Infrastructure.Repositories;
 using LMS.Presentation.UI;
+using LMS.Application.Services;
 
 namespace LMS.Presentation
 {
@@ -17,6 +17,7 @@ namespace LMS.Presentation
                 .AddTransient<BookUI>()
                 .AddTransient<MemberUI>()
                 .AddTransient<MainMenu>()
+                .AddTransient<IBookAvailabilityService, BookAvailabilityService>()
                 .BuildServiceProvider();
             var app = serviceProvider.GetService<MainMenu>();
 
