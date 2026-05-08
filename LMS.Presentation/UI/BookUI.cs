@@ -6,10 +6,12 @@ namespace LMS.Presentation.UI
     public class BookUI
     {
         private readonly IBookRepository _bookRepo;
+        private readonly IBookAvailabilityService _availabilityService;
 
-        public BookUI(IBookRepository bookRepo)
+        public BookUI(IBookRepository bookRepo, IBookAvailabilityService availabilityService)
         {
             _bookRepo = bookRepo;
+            _availabilityService = availabilityService;
         }
 
         public void AddBookFlow()
@@ -70,10 +72,12 @@ namespace LMS.Presentation.UI
             else
             {
                 foreach (var book in books)
-                {
+                {   
+                    int available = _availabilityService.GetAvailableCopies(book.Id);
                     Console.WriteLine($"- ID: {book.Id}");
                     Console.WriteLine($"  Title: {book.Title}");
                     Console.WriteLine($"  Author: {book.Author}");
+                    Console.WriteLine($"  Quantity: {book.Quantity} | Available: {available}");
                     Console.WriteLine("  -------------------------");
                 }
             }

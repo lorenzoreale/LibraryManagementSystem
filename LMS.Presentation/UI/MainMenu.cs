@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace LMS.Presentation.UI
+﻿namespace LMS.Presentation.UI
 {
     public class MainMenu
     {
