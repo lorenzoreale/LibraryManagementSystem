@@ -4,11 +4,13 @@
     {
         private readonly BookUI _bookUI;
         private readonly MemberUI _memberUI;
+        private readonly TransactionUI _transactionUI;
 
-        public MainMenu(BookUI bookUI, MemberUI memberUI)
+        public MainMenu(BookUI bookUI, MemberUI memberUI, TransactionUI transactionUI)
         {
             _bookUI = bookUI;
             _memberUI = memberUI;
+            _transactionUI = transactionUI;
         }
 
         public void Show()
@@ -28,6 +30,8 @@
                 Console.WriteLine("4. Add new member");
                 Console.WriteLine("5. View members");
                 Console.WriteLine("6. Delete member");
+                Console.WriteLine("-----------------------------------------------");
+                Console.WriteLine("7. Checkout Book");
                 Console.WriteLine("-----------------------------------------------");                
                 Console.WriteLine("0. Exit");
                 Console.Write("\nSelect an option: ");
@@ -58,6 +62,10 @@
                     
                     case "6":
                         _memberUI.DeleteMemberFlow();
+                        break;
+                    
+                    case "7":
+                        _transactionUI.CheckoutFlow();
                         break;
 
                     case "0":

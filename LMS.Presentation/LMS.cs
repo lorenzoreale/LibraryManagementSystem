@@ -17,7 +17,9 @@ namespace LMS.Presentation
                 .AddTransient<BookUI>()
                 .AddTransient<MemberUI>()
                 .AddTransient<MainMenu>()
+                .AddTransient<TransactionUI>()
                 .AddTransient<IBookAvailabilityService, BookAvailabilityService>()
+                .AddTransient<ICheckoutService, CheckoutService>()
                 .BuildServiceProvider();
             var app = serviceProvider.GetService<MainMenu>();
 
