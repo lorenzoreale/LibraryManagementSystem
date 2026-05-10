@@ -69,6 +69,10 @@
                         _transactionUI.CheckoutFlow();
                         break;
 
+                    case "8":
+                        _transactionUI.ReturnFlow();
+                        break;
+
                     case "0":
                         exit = true;
                         Console.WriteLine("\nQuitting the app. Goodbye!");

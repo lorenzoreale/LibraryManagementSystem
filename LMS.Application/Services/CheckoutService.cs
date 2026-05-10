@@ -20,24 +20,32 @@ namespace LMS.Application.Services
         }
         
         public void CheckoutBook(Guid memberId, Guid bookId)
-        {
-            var book = _bookRepo.GetById(bookId);
-            if (book == null)
-                throw new InvalidOperationException("No book found.");
+{
+        var book = _bookRepo.GetById(bookId);
+        if (book == null)
+            throw new InvalidOperationException("No book found.");
 
-            int availableCopies = _availabilityService.GetAvailableCopies(bookId);
-            if (availableCopies <= 0)
-                throw new InvalidOperationException("No copies available.");
-            
-            var member = _memberRepo.GetById(memberId);
-            if (member == null)
-                throw new InvalidOperationException("Member not found.");
+        int availableCopies = _availabilityService.GetAvailableCopies(bookId);
+        if (availableCopies <= 0)
+            throw new InvalidOperationException("No copies available.");
 
-            // case of member having >5 books borrowed
+        var member = _memberRepo.GetById(memberId);
+        if (member == null)
+            throw new InvalidOperationException("Member not found.");
 
-            Transaction newBorrow = new Transaction(memberId, bookId, TransactionType.Borrow);
-            _transactionRepo.Add(newBorrow);
+        var memberTransactions = _transactionRepo.GetByMemberId(memberId);
+        var activeBorrowCount = memberTransactions
+            .Count(t => t.Type == TransactionType.Borrow &&
+                        !memberTransactions.Any(r =>
+                            r.BookId == t.BookId &&
+                            r.Type == TransactionType.Return &&
+                            r.OccurredAt > t.OccurredAt));
 
+        if (activeBorrowCount >= 5)
+            throw new InvalidOperationException("Member has reached the maximum of 5 active loans.");
+
+        Transaction newBorrow = new Transaction(memberId, bookId, TransactionType.Borrow);
+        _transactionRepo.Add(newBorrow);
         }
 
     }

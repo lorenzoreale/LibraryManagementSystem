@@ -59,8 +59,9 @@ user input through `MainMenu`, `BookUI`, and `MemberUI`.
 - View all members
 - Delete a member by ID
 
-### Transactions *(in progress)*
-- Record borrow and return events
+### Transactions
+- Checkout a book (member borrows a copy)
+- Return a book (member returns an active loan)
 - Query transactions by book or member
 
 ---
@@ -98,9 +99,6 @@ truth for the state of every copy in the library.
 
 ## Roadmap
 
-- [ ] Checkout flow (borrow a book as a member)
-- [ ] Return flow
-- [ ] Search and filter books and members
 - [ ] Unit tests for Domain entities and Application services
 - [ ] Migrate persistence from JSON to SQL Server via Entity Framework Core
 - [ ] Move to ASP.NET Core Web API
