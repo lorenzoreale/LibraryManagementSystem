@@ -1,6 +1,7 @@
 using LMS.Domain.Entities;
 using LMS.Domain.Enums;
 using LMS.Domain.Interfaces;
+using LMS.Application.Interfaces;
 
 namespace LMS.Application.Services
 {

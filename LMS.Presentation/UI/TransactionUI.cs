@@ -1,4 +1,5 @@
 using LMS.Domain.Interfaces;
+using LMS.Application.Interfaces;
 
 namespace LMS.Presentation.UI
 {
