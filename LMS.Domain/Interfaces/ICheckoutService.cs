@@ -1,4 +1,4 @@
-namespace LMS.Application.Interfaces
+namespace LMS.Domain.Interfaces
 {
     public interface ICheckoutService
     {

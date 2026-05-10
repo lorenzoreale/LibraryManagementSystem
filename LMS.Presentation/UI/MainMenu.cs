@@ -31,7 +31,8 @@
                 Console.WriteLine("5. View members");
                 Console.WriteLine("6. Delete member");
                 Console.WriteLine("-----------------------------------------------");
-                Console.WriteLine("7. Checkout Book");
+                Console.WriteLine("7. Checkout book");
+                Console.WriteLine("8. Return book");
                 Console.WriteLine("-----------------------------------------------");                
                 Console.WriteLine("0. Exit");
                 Console.Write("\nSelect an option: ");
