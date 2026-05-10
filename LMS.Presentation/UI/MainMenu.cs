@@ -19,7 +19,6 @@
 
             while (!exit)
             {
-                // menu to be designed to include members (and transactions?)
                 Console.Clear();
                 Console.WriteLine("########## LIBRARY MANAGEMENT SYSTEM ##########");
                 Console.WriteLine("-----------------------------------------------");

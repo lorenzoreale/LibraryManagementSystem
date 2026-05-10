@@ -27,12 +27,15 @@ Has zero external dependencies — no JSON, no UI, no framework.
 - `IMemberRepository` — contract for member persistence
 - `ITransactionRepository` — contract for transaction persistence
 - `IBookAvailabilityService` — contract for available copies calculation
+- `ICheckoutService` — contract for book checkout
+- `IReturnService` — contract for book return
 
 ### LMS.Application
 Orchestration layer between Domain and Infrastructure.
 
-- `BookAvailabilityService` — calculates available copies using Quantity minus active borrows,
-  derived from transaction history
+- `BookAvailabilityService` — calculates available copies using Quantity minus active borrows, derived from transaction history
+- `CheckoutService` — orchestrates checkout: validates book, availability, member, loan limit
+- `ReturnService` — orchestrates return: validates active loan, records return transaction
 
 ### LMS.Infrastructure
 Implements the persistence contracts defined in Domain using JSON files.
@@ -42,8 +45,7 @@ Implements the persistence contracts defined in Domain using JSON files.
 - `JsonTransactionRepository` → `transactions_data.json`
 
 ### LMS.Presentation
-Entry point and console UI. Wires up the DI container in `LMS.cs` and routes
-user input through `MainMenu`, `BookUI`, and `MemberUI`.
+Entry point and console UI. Wires up the DI container in `LMS.cs` and routes user input through `MainMenu`, `BookUI`, and `MemberUI` and `TransactionUI`.
 
 ---
 
